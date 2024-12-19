@@ -1,0 +1,82 @@
+﻿<Page x:Class="IS_Bibl.Bibl.BookCUPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IS_Bibl.Bibl"
+      mc:Ignorable="d"  
+      
+                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+Background="{DynamicResource MaterialDesign.Brush.Background}"
+TextElement.FontWeight="Medium"
+TextElement.FontSize="20"
+FontFamily="{materialDesign:MaterialDesignFont}"
+
+d:DesignHeight="720" d:DesignWidth="1080"
+Title="ReadPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="TbxName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center" 
+materialDesign:HintAssist.Hint="Название"
+Style="{StaticResource MaterialDesignFilledTextBox}">
+        </TextBox>
+
+        <TextBox x:Name="TbxDescription" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" 
+materialDesign:HintAssist.Hint="Описание"
+Style="{StaticResource MaterialDesignFilledTextBox}">
+        </TextBox>
+
+        <TextBox x:Name="TbxDate" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" 
+materialDesign:HintAssist.Hint="Дата публикации"
+Style="{StaticResource MaterialDesignFilledTextBox}">
+        </TextBox>
+
+        <TextBox x:Name="TbxQuantity" Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" 
+materialDesign:HintAssist.Hint="Количество"
+Style="{StaticResource MaterialDesignFilledTextBox}">
+        </TextBox>
+
+        <DataGrid x:Name="DGAuthors" FontSize="18" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"
+    CanUserAddRows="False"
+    SelectionMode="Extended"
+    SelectionUnit="FullRow" 
+    IsReadOnly="True" Loaded="DGA_Loaded"/>
+
+        <DataGrid x:Name="DGGenres" FontSize="18" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"
+CanUserAddRows="False"
+SelectionMode="Extended"
+SelectionUnit="FullRow" 
+IsReadOnly="True" Loaded="DGG_Loaded"/>
+
+        <Button x:Name="BtnCreate" Grid.Column="5" Grid.Row="4" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+Content="Сохранить" FontSize="20"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+ToolTip="MaterialDesignFlatSecondaryDarkBgButton" Click="Save"/>
+
+        <Button x:Name="BtnExit" Grid.Column="6" Grid.Row="4" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+Content="Отменить" FontSize="20"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+ToolTip="MaterialDesignFlatSecondaryDarkBgButton" Click="Exit" />
+    </Grid>
+</Page>

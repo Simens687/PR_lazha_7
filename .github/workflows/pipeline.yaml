@@ -1,0 +1,37 @@
+name: Check Style Code for WPF App
+
+on:
+  push:
+    branches:
+      - new_vetochka
+  pull_request:
+    branches:
+      - new_vetochka
+
+jobs:
+  checkstyle:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET Framework
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Install .NET Tools
+      run: |
+        choco install dotnetfx --yes
+        choco install microsoft-build-tools --yes
+        choco install visualstudio2019buildtools --yes
+
+    - name: Restore NuGet packages
+      run: nuget restore IS_BIBL.sln
+
+    - name: Build solution
+      run: msbuild IS_BIBL.sln /p:Configuration=Release
+
+    - name: Run Code Analysis
+      run: |
+        dotnet tool install -g dotnet-format
+        dotnet format --check

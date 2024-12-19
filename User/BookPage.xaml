@@ -1,0 +1,103 @@
+﻿<Page x:Class="IS_Bibl.User.BookPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IS_Bibl.User"
+      mc:Ignorable="d" 
+                                            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+Background="{DynamicResource MaterialDesign.Brush.Background}"
+TextElement.FontWeight="Medium"
+TextElement.FontSize="14"
+FontFamily="{materialDesign:MaterialDesignFont}"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+
+
+d:DesignHeight="720" d:DesignWidth="1080"
+        
+        Title="BookPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.45*" />
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.45*"/>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="TbxName" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="Пушкин, Александр Сергеевич" FontSize="20"
+materialDesign:HintAssist.Hint="Название:" IsReadOnly="True"
+Style="{StaticResource MaterialDesignFilledTextBox}"/>
+
+        <TextBox x:Name="TbxDescription" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="Пушкин" FontSize="20"
+materialDesign:HintAssist.Hint="Описание:" IsReadOnly="True"
+Style="{StaticResource MaterialDesignFilledTextBox}"/>
+
+        <lvc:PieChart x:Name="RatingPieChart" Grid.Column="3" Grid.Row="2" Grid.RowSpan="4"/>
+
+
+
+        <TextBox x:Name="TbxRating" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1" VerticalAlignment="Center" Text="4.5" FontSize="20"
+materialDesign:HintAssist.Hint="Рейтинг:" IsReadOnly="True"
+Style="{StaticResource MaterialDesignFilledTextBox}"/>
+
+        <Button x:Name="BtnRate" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"
+Content="      Оставить отзыв      "
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+ToolTip="MaterialDesignFlatSecondaryDarkBgButton" Click="GoRate" />
+
+        <DataGrid x:Name="DGReviews" FontSize="18" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"
+CanUserAddRows="False"
+SelectionMode="Extended"
+SelectionUnit="FullRow" 
+IsReadOnly="True"/>
+
+        <TextBox x:Name="TbxDate" Grid.Column="5" VerticalAlignment="Center" FontSize="16"
+materialDesign:HintAssist.Hint="Дата публикации:" IsReadOnly="True"
+Style="{StaticResource MaterialDesignFilledTextBox}"/>
+
+        <TextBox x:Name="TbxQuantity" Grid.Column="7" VerticalAlignment="Center" FontSize="16"
+materialDesign:HintAssist.Hint="В наличии:" IsReadOnly="True"
+Style="{StaticResource MaterialDesignFilledTextBox}"/>
+
+        <DataGrid x:Name="DGAuthors" FontSize="18" Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2"
+    CanUserAddRows="False"
+    SelectionMode="Extended"
+    SelectionUnit="FullRow" 
+    IsReadOnly="True" AutoGenerateColumns="False"/>
+
+        <DataGrid x:Name="DGGenres" FontSize="18" Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="2"
+CanUserAddRows="False"
+SelectionMode="Extended"
+SelectionUnit="FullRow" 
+IsReadOnly="True" AutoGenerateColumns="False"/>
+
+        <Button x:Name="BtnUpdate" Grid.Column="5" Grid.Row="7" HorizontalAlignment="Center"
+Content="   Забронировать   "
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+ToolTip="MaterialDesignFlatSecondaryDarkBgButton" />
+
+        <Button x:Name="BtnBack" Grid.Column="7" Grid.Row="7" HorizontalAlignment="Center"
+Content="Назад"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+ToolTip="MaterialDesignFlatSecondaryDarkBgButton" Click="GoBack" />
+    </Grid>
+</Page>

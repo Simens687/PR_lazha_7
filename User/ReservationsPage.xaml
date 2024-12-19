@@ -1,0 +1,32 @@
+﻿<Page x:Class="IS_Bibl.User.ReservationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IS_Bibl.User"
+      mc:Ignorable="d" 
+                                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+Background="{DynamicResource MaterialDesign.Brush.Background}"
+TextElement.FontWeight="Medium"
+TextElement.FontSize="14"
+FontFamily="{materialDesign:MaterialDesignFont}"
+
+d:DesignHeight="720" d:DesignWidth="1080"
+Title="AuthorsPage">
+
+    <Grid>
+        <DataGrid x:Name="DGReservations" FontSize="24" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="8"
+          CanUserAddRows="False"
+          SelectionMode="Single"
+          SelectionUnit="FullRow" 
+          IsReadOnly="True" Loaded="Loaded"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название книги" Binding="{Binding BookTitle}" />
+                <DataGridTextColumn Header="Дата бронирования" Binding="{Binding ReserveDate, StringFormat=\{0:dd.MM.yyyy\}}" />
+                <DataGridTextColumn Header="Дата окончания брони" Binding="{Binding DueDate, StringFormat=\{0:dd.MM.yyyy\}, TargetNullValue=—}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
